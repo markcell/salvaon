@@ -1,6 +1,6 @@
 Salvaon
 =======
 
-Package based on Laravel Eloquent to manage XML files.
+Package for Laravel based on Eloquent to manage XML files.
 
 Available soon...
