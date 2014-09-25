@@ -1,6 +1,6 @@
 Salvaon
 =======
 
-Class based on Laravel Eloquent to manage XML files.
+Package based on Laravel Eloquent to manage XML files.
 
 Available soon...
