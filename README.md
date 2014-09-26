@@ -78,8 +78,10 @@ https://github.com/markcell/salvaon/blob/master/breakfast.xml
 // Get all child nodes from XML root.
 $foods = Breakfast::all();
 
+
 // Count elements from selected childs $foods.
 $foods->count();
+
 
 // Get child from XML by $primaryKey or fail if not exists.
 Breakfast::findOrFail('French Toast');
