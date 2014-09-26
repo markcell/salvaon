@@ -13,11 +13,13 @@ Install the package through Composer.
 }
 ```
 
+
 Edit 'app/config/app.php', and add a new item to the 'aliases' array:
 
 ```php
 'Salvaon' => 'Markcell\Salvaon\Salvaon'
 ```
+
 
 Publish configuration file from package:
 
@@ -26,6 +28,7 @@ php artisan config:publish markcell/salvaon
 ```
 
 You may now edit these options at 'app/config/packages/markcell/salvaon/config.php'. Or copy this file to 'app/config' folder with name 'salvaon.php'.
+
 
 Now, your XML models can simply extend 'Salvaon':
 
@@ -63,6 +66,8 @@ class Breakfast extends Salvaon {
     protected $primaryKey = 'name';
 
 }
+
+
 ```
 Example of 'breakfast.xml' file:
 
@@ -100,6 +105,7 @@ Example of 'breakfast.xml' file:
         <calories>950</calories>
     </food>
 </breakfast>
+
 
 ```
 ##Help
