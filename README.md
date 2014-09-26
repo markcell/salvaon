@@ -25,6 +25,8 @@ Publish configuration file from package:
 php artisan config:publish markcell/salvaon
 ```
 
+You may now edit these options at 'app/config/packages/markcell/salvaon/config.php'. Or copy this file to 'app/config' folder with name 'salvaon.php'.
+
 Now, your XML models can simply extend 'Salvaon':
 
 ```php
