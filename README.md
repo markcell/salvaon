@@ -19,6 +19,12 @@ Edit 'app/config/app.php', and add a new item to the 'aliases' array:
 'Salvaon' => 'Markcell\Salvaon\Salvaon'
 ```
 
+Publish configuration file from package:
+
+```bash
+php artisan config:publish markcell/salvaon
+```
+
 Now, your XML models can simply extend 'Salvaon':
 
 ```php
@@ -56,7 +62,7 @@ class Breakfast extends Salvaon {
 
 }
 ```
-Example of XML file:
+Example of 'breakfast.xml' file:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
