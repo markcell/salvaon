@@ -66,9 +66,9 @@ class Breakfast extends Salvaon {
     protected $primaryKey = 'name';
 
 }
-
-
 ```
+
+
 Example of 'breakfast.xml' file:
 
 ```xml
@@ -105,8 +105,8 @@ Example of 'breakfast.xml' file:
         <calories>950</calories>
     </food>
 </breakfast>
-
-
 ```
+
+
 ##Help
 More help and class reference available soon...
