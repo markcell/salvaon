@@ -1,5 +1,5 @@
 #Salvaon
-Package for Laravel based on Eloquent to manage XML files.
+Package for Laravel based on Eloquent to manage XML files with SimpleXMLElement and xpath.
 
 ##Usage
 Install the package through Composer.
@@ -73,5 +73,7 @@ See example of 'breakfast.xml' file on this link:
 https://github.com/markcell/salvaon/blob/master/breakfast.xml
 
 
-##Help
-More help and class reference available soon...
+##Examples
+```php
+Breakfast::all();
+```
