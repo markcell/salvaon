@@ -75,5 +75,22 @@ https://github.com/markcell/salvaon/blob/master/breakfast.xml
 
 ##Examples
 ```php
-Breakfast::all();
+// Get all child nodes from XML root.
+$foods = Breakfast::all();
+
+// Count elements from selected childs $foods.
+$foods->count();
+
+// Get child from XML by $primaryKey or fail if not exists.
+Breakfast::findOrFail('French Toast');
+
+// Get child from XML with where condition.
+$food = Breakfast::select()->where('name', '=', 'French Toast')->get();
+
+// Update fields from selected child $food. 
+$food->price = $3.25;
+$food->calories = 450;
+
+// Save changes.
+$food->save();
 ```
