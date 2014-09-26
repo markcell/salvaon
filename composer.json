@@ -1,0 +1,16 @@
+{
+    "name": "markcell/salvaon",
+    "description": "Package for Laravel based on Eloquent to manage XML files.",    
+    "keywords": ["xml", "laravel", "eloquent"],
+    "license": "MIT",
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Markcell\\Salvaon": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
