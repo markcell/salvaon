@@ -91,7 +91,7 @@ Breakfast::findOrFail('French Toast');
 $food = Breakfast::select()->where('name', '=', 'French Toast')->get();
 
 // Update fields from selected child $food. 
-$food->price = 3.25€;
+$food->price = '3.25€';
 $food->calories = 450;
 
 // Save changes.
@@ -103,7 +103,7 @@ $new = new Breakfast;
 
 // Add data to child fields.
 $new->name = 'French Toast';
-$new->price = 4.50€;
+$new->price = '4.50€';
 $new->description = 'Thick slices made from our homemade sourdough bread';
 $new->calories = 600;
 
