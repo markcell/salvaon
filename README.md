@@ -84,13 +84,27 @@ $foods->count();
 // Get child from XML by $primaryKey or fail if not exists.
 Breakfast::findOrFail('French Toast');
 
+
 // Get child from XML with where condition.
 $food = Breakfast::select()->where('name', '=', 'French Toast')->get();
 
 // Update fields from selected child $food. 
-$food->price = 3.25â‚¬;
+$food->price = 3.25€;
 $food->calories = 450;
 
 // Save changes.
 $food->save();
+
+
+// Create new XML child.
+$new = new Breakfast;
+
+// Add data to child fields.
+$new->name = 'French Toast';
+$new->price = 4.50€;
+$new->description = 'Thick slices made from our homemade sourdough bread';
+$new->calories = 600;
+
+// Save new child to XML file with tag attributes.
+$new->save(array('id' => 26092014));
 ```
