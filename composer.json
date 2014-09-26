@@ -1,7 +1,7 @@
 {
     "name": "markcell/salvaon",
     "description": "Package for Laravel based on Eloquent to manage XML files.",    
-    "keywords": ["xml", "laravel", "eloquent"],
+    "keywords": ["xml", "laravel", "eloquent", "xpath"],
     "license": "MIT",
     "require": {
         "php": ">=5.4.0",
