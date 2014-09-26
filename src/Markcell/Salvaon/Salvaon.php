@@ -3,9 +3,10 @@
 use \Config;
 use \ArrayIterator;
 use \IteratorAggregate;
+use \SimpleXMLElement;
 
 /**
- * Salvaon 0.5 "Senhor Todo-Poderoso"
+ * Salvaon 1.0.0 "Senhor Todo-Poderoso"
  *
  * Base functions for XML models
  */
@@ -47,6 +48,13 @@ abstract class Salvaon implements IteratorAggregate {
     protected $primaryKey = 'id';
 
     /**
+     * Attributes to add new child.
+     *
+     * @var array
+     */
+    protected $new = array();
+
+    /**
      * SimpleXMLElement xpath expression in parts.
      *
      * @var array
@@ -56,14 +64,14 @@ abstract class Salvaon implements IteratorAggregate {
         'contains' => '',
         'order'    => false,
         'limit'    => false
-    );    
-    
+    );
+
     /**
      * Full path to XML file.
      *
      * @var string
      */
-    protected $path;
+    protected static $path;
 
     /**
      * The array of booted models.
@@ -98,15 +106,6 @@ abstract class Salvaon implements IteratorAggregate {
     }
 
     /**
-     * Get XML file path.
-     *
-     * @return string
-     */
-    public function getFilePath() {
-        return $this->path;
-    }
-
-    /**
      * Check if the model needs to be booted and if so, do it.
      *
      * @return void
@@ -115,10 +114,10 @@ abstract class Salvaon implements IteratorAggregate {
         $class = get_class($this);
 
         if (!isset(static::$booted[$class])) {
-            $this->path = Config::get('salvaon.path', storage_path() . '/xml') . '/' . $this->file;
+            static::$path = Config::get('salvaon.path', storage_path() . '/xml') . '/' . $this->file;
 
             static::$booted[$class] = true;
-            static::$xmlObject = simplexml_load_file($this->path);
+            static::$xmlObject = new SimpleXMLElement(static::$path, 0, true);
         }
     }
 
@@ -183,31 +182,23 @@ abstract class Salvaon implements IteratorAggregate {
         $instance->xml = $instance->xpath($query);
 
         return $instance;
-    }  
-    
-    /**
-     * Create new XML node.
-     *
-     * @param array $tags
-     * @param array $attributes
-     * @return array|static
-     */
-    public static function create($tags, $attributes = array()) {
-        $all = self::all();
-        
-        // incompleto
     }
 
     /**
      * Save changes from XML object.
      *
+     * @param array $attributes Attributes for child that you are added.
      * @return \Salvaon
      */
-    public function save() {
-        $result = static::$xmlObject->asXML($this->path);
+    public function save($attributes = array()) {
+        if (!empty($this->new)) {
+            $this->addChildWithAttributes($attributes);
+        }
+        
+        $result = static::$xmlObject->asXML(static::$path);
 
         if ($result === false) {
-            throw new \Exception('Cannot save values into "' . $this->file . '".');
+            throw new \Exception('Cannot save values into "' . static::$path . '".');
         }
 
         return $this;
@@ -231,7 +222,7 @@ abstract class Salvaon implements IteratorAggregate {
      */
     public function count() {
         return count($this->xml);
-    }  
+    }
 
     /**
      * Select something from XML file with xpath syntax.
@@ -424,6 +415,24 @@ abstract class Salvaon implements IteratorAggregate {
         return strcmp($a->{$this->query['order']['attribute']}, $b->{$this->query['order']['attribute']});
     }
 
+    /**
+     * Add child with attributes to $xmlObject.
+     *
+     * @param array $attributes
+     * @return void
+     */
+    protected function addChildWithAttributes($attributes = array()) {
+        $child = static::$xmlObject->addChild($this->child);
+
+        foreach ($attributes as $key => $value) {
+            $child->addAttribute($key, $value);
+        }
+
+        foreach ($this->new as $key => $value) {
+            $child->addChild($key, $value);
+        }
+    }
+
    /**
      * Dynamically retrieve the value of an attribute.
      *
@@ -446,7 +455,11 @@ abstract class Salvaon implements IteratorAggregate {
      * @return void
      */
     public function __set($key, $value) {
-        $this->xml->$key = $value;
+        if (is_null($this->xml)) {
+            $this->new[$key] = $value;
+        } else {
+            $this->xml->$key = $value;
+        }
     }
 
     /**
