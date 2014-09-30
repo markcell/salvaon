@@ -4,6 +4,8 @@ use \Config;
 use \ArrayIterator;
 use \IteratorAggregate;
 use \SimpleXMLElement;
+use \Exception;
+use \Illuminate\Database\Eloquent\ModelNotFoundException
 
 /**
  * Salvaon 1.0.0 "Senhor Todo-Poderoso"
@@ -141,7 +143,7 @@ abstract class Salvaon implements IteratorAggregate {
         $model = self::find($id);
 
         if (is_null($model)) {
-            throw (new Illuminate\Database\Eloquent\ModelNotFoundException)->setModel(get_called_class());
+            throw (new ModelNotFoundException)->setModel(get_called_class());
         }
 
         return $model;
@@ -198,7 +200,7 @@ abstract class Salvaon implements IteratorAggregate {
         $result = static::$xmlObject->asXML(static::$path);
 
         if ($result === false) {
-            throw new \Exception('Cannot save values into "' . static::$path . '".');
+            throw new Exception('Cannot save values into "' . static::$path . '".');
         }
 
         return $this;
