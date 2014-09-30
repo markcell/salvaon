@@ -5,7 +5,7 @@ use \ArrayIterator;
 use \IteratorAggregate;
 use \SimpleXMLElement;
 use \Exception;
-use \Illuminate\Database\Eloquent\ModelNotFoundException
+use \Illuminate\Database\Eloquent\ModelNotFoundException;
 
 /**
  * Salvaon 1.0.0 "Senhor Todo-Poderoso"
