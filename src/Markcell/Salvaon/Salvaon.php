@@ -8,7 +8,7 @@ use \Exception;
 use \Illuminate\Database\Eloquent\ModelNotFoundException;
 
 /**
- * Salvaon 1.0.0 "Senhor Todo-Poderoso"
+ * Salvaon 1.0.2 "Senhor Todo-Poderoso"
  *
  * Base functions for XML models
  */
