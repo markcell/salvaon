@@ -8,7 +8,7 @@ use \Exception;
 use \Illuminate\Database\Eloquent\ModelNotFoundException;
 
 /**
- * Salvaon 1.0.2 "Senhor Todo-Poderoso"
+ * Salvaon 1.0.3 "Senhor Todo-Poderoso"
  *
  * Base functions for XML models
  */
@@ -117,9 +117,15 @@ abstract class Salvaon implements IteratorAggregate {
 
         if (!isset(static::$booted[$class])) {
             static::$path = Config::get('salvaon.path', storage_path() . '/xml') . '/' . $this->file;
-
-            static::$booted[$class] = true;
             static::$xmlObject = new SimpleXMLElement(static::$path, 0, true);
+
+            static::$booted[$class] = array(
+                'path' => static::$path,
+                'object' => new SimpleXMLElement(static::$path, 0, true)
+            );
+        } else {
+            static::$path = static::$booted[$class]['path'];
+            static::$xmlObject = static::$booted[$class]['object'];
         }
     }
 
