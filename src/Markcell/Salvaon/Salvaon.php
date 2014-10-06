@@ -8,7 +8,7 @@ use \Exception;
 use \Illuminate\Database\Eloquent\ModelNotFoundException;
 
 /**
- * Salvaon 1.0.3 "Senhor Todo-Poderoso"
+ * Salvaon 1.0.4 "Senhor Todo-Poderoso"
  *
  * Base functions for XML models
  */
@@ -420,7 +420,7 @@ abstract class Salvaon implements IteratorAggregate {
      * @return integer
      */
     protected function queryCompare($a, $b) {
-        return strcmp($a->{$this->query['order']['attribute']}, $b->{$this->query['order']['attribute']});
+        return strnatcmp($a->{$this->query['order']['attribute']}, $b->{$this->query['order']['attribute']});
     }
 
     /**
