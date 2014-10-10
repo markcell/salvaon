@@ -17,7 +17,7 @@ abstract class Salvaon implements IteratorAggregate {
     /**
      * SimpleXMLElement object from loaded XML file.
      *
-     * @var object
+     * @var object|null
      */
     public $xml = null;
 
@@ -197,12 +197,13 @@ abstract class Salvaon implements IteratorAggregate {
      *
      * @param array $attributes Attributes for child that you are added.
      * @return \Salvaon
+     * @throws Exception
      */
     public function save($attributes = array()) {
         if (!empty($this->new)) {
             $this->addChildWithAttributes($attributes);
         }
-        
+
         $result = static::$xmlObject->asXML(static::$path);
 
         if ($result === false) {
@@ -446,13 +447,14 @@ abstract class Salvaon implements IteratorAggregate {
      *
      * @param string $key
      * @return mixed
+     * @throws Exception
      */
     public function __get($key) {
         if (isset($this->xml->{$key})) {
             return $this->xml->{$key};
         }
 
-        throw new \Exception('Attribute "' . $key . '" not found in "' . get_class(new static) . '".');
+        throw new Exception('Attribute "' . $key . '" not found in "' . get_class(new static) . '".');
     }
 
     /**
@@ -474,7 +476,7 @@ abstract class Salvaon implements IteratorAggregate {
      * Dynamically check if an attribute is set.
      *
      * @param string $key
-     * @return void
+     * @return boolean
      */
     public function __isset($key) {
         return isset($this->xml->$key);
