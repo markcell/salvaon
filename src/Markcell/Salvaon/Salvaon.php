@@ -17,7 +17,7 @@ abstract class Salvaon implements IteratorAggregate {
     /**
      * SimpleXMLElement object from loaded XML file.
      *
-     * @var object|null
+     * @var object|array|null
      */
     public $xml = null;
 
@@ -92,7 +92,7 @@ abstract class Salvaon implements IteratorAggregate {
     /**
      * Create a new Salvaon model instance.
      *
-     * @return void
+     * @return Salvaon
      */
     public function __construct() {
         $this->bootIfNotBooted();
@@ -196,7 +196,7 @@ abstract class Salvaon implements IteratorAggregate {
      * Save changes from XML object.
      *
      * @param array $attributes Attributes for child that you are added.
-     * @return \Salvaon
+     * @return Salvaon
      * @throws Exception
      */
     public function save($attributes = array()) {
@@ -216,7 +216,7 @@ abstract class Salvaon implements IteratorAggregate {
     /**
      * Delete XML node from object.
      *
-     * @return \Salvaon
+     * @return Salvaon
      */
     public function delete() {
         unset($this->xml[0]);
@@ -250,7 +250,7 @@ abstract class Salvaon implements IteratorAggregate {
     /**
      * Initialize query builder static instance.
      *
-     * @return \static
+     * @return static
      */
     public static function select() {
         $instance = new static;
@@ -265,7 +265,7 @@ abstract class Salvaon implements IteratorAggregate {
      * @param string $operator
      * @param mixed $value
      * @param string $where [default: 'and']
-     * @return \Salvaon
+     * @return Salvaon
      */
     public function where($attribute, $operator, $value, $where = 'and') {
         if (!empty($this->query['where'])) {
@@ -283,7 +283,7 @@ abstract class Salvaon implements IteratorAggregate {
      * @param string $attribute
      * @param string $operator
      * @param mixed $value
-     * @return \Salvaon
+     * @return Salvaon
      */
     public function orWhere($attribute, $operator, $value) {
         return $this->where($attribute, $operator, $value, 'or');
@@ -295,7 +295,7 @@ abstract class Salvaon implements IteratorAggregate {
      * @param string $attribute
      * @param mixed $value
      * @param string $contains [default: 'and']
-     * @return \Salvaon
+     * @return Salvaon
      */
     public function contains($attribute, $value, $contains = 'and') {
         if (!empty($this->query['contains'])) {
@@ -312,7 +312,7 @@ abstract class Salvaon implements IteratorAggregate {
      *
      * @param string $attribute
      * @param mixed $value
-     * @return \Salvaon
+     * @return Salvaon
      */
     public function orContains($attribute, $value) {
         return $this->contains($attribute, $value, 'or');
@@ -322,7 +322,7 @@ abstract class Salvaon implements IteratorAggregate {
      * skip()
      *
      * @param integer $skip
-     * @return \Salvaon
+     * @return Salvaon
      */
     public function skip($skip) {
         $this->query['limit']['skip'] = $skip;
@@ -334,7 +334,7 @@ abstract class Salvaon implements IteratorAggregate {
      * take()
      *
      * @param integer $take
-     * @return \Salvaon
+     * @return Salvaon
      */
     public function take($take) {
         $this->query['limit']['take'] = $take;
@@ -347,7 +347,7 @@ abstract class Salvaon implements IteratorAggregate {
      *
      * @param string $attribute
      * @param string $type
-     * @return \Salvaon
+     * @return Salvaon
      */
     public function orderBy($attribute, $type = "asc") {
         $this->query['order']['attribute'] = $attribute;
