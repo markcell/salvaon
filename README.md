@@ -8,7 +8,7 @@ Install the package through Composer.
 {
     "require": {
         "laravel/framework": "4.2.*",
-        "markcell/salvaon": "dev-master"
+        "markcell/salvaon": "dev-master" // or "markcell/salvaon": "1.0.*"
     }
 }
 ```
