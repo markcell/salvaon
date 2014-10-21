@@ -454,6 +454,19 @@ abstract class Salvaon implements IteratorAggregate {
         
         return $this->xml;
     }
+            
+    /**
+     * Check if array of SimpleXMLElement objects is empty
+     * 
+     * @return boolean
+     */
+    public function isEmpty() {
+        if (empty($this->xml)) {
+            return false;
+        }
+        
+        return true;
+    }
 
    /**
      * Dynamically retrieve the value of an attribute.
