@@ -462,10 +462,10 @@ abstract class Salvaon implements IteratorAggregate {
      */
     public function isEmpty() {
         if (empty($this->xml)) {
-            return false;
+            return true;
         }
         
-        return true;
+        return false;
     }
 
    /**
