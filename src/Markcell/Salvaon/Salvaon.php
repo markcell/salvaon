@@ -8,7 +8,7 @@ use \Exception;
 use \Illuminate\Database\Eloquent\ModelNotFoundException;
 
 /**
- * Salvaon 1.0.4 "Senhor Todo-Poderoso"
+ * Salvaon 1.0.5 "Senhor Todo-Poderoso"
  *
  * Base functions for XML models
  */
@@ -440,6 +440,19 @@ abstract class Salvaon implements IteratorAggregate {
         foreach ($this->new as $key => $value) {
             $child->addChild($key, $value);
         }
+    }
+        
+    /**
+     * Get array of SimpleXMLElement objects
+     * 
+     * @return array|null
+     */
+    public function toArray() {
+        if (!is_array($this->xml) && !is_null($this->xml)) {
+            return array($this->xml);
+        }
+        
+        return $this->xml;
     }
 
    /**
