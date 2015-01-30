@@ -111,5 +111,5 @@ $new->calories = 600;
 $new->save(array('id' => 26092014));
 ```
 
-##Help
-More help and reference soon...
+##License
+Code released under the MIT license.
