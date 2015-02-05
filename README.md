@@ -1,4 +1,5 @@
 #Salvaon
+[![Latest Stable Version](https://poser.pugx.org/markcell/salvaon/v/stable.svg)](https://packagist.org/packages/markcell/salvaon) [![Total Downloads](https://poser.pugx.org/markcell/salvaon/downloads.svg)](https://packagist.org/packages/markcell/salvaon) [![Latest Unstable Version](https://poser.pugx.org/markcell/salvaon/v/unstable.svg)](https://packagist.org/packages/markcell/salvaon) [![License](https://poser.pugx.org/markcell/salvaon/license.svg)](https://packagist.org/packages/markcell/salvaon)
 Package for Laravel based on Eloquent to manage XML files with SimpleXMLElement and xpath.
 
 ##Usage
