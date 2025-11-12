@@ -3,6 +3,9 @@
 
 Package for Laravel based on Eloquent to manage XML files with SimpleXMLElement and xpath.
 
+> [!WARNING]
+> This repository hasn't been actively maintained for quite some time. The code is still here if you find it useful, but no further updates or support will be provided.
+
 ## Usage
 Install the package through Composer.
 
